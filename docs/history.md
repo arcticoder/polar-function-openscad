@@ -1,3 +1,4 @@
+
 spiral_surface.scad is attached. I have not rendered it, so it is untested in OpenSCAD.
 
 • Log base: OpenSCAD's log() is base 10, so the script uses ln(). This assumes the equation's log is the natural log, which the equation does not state.
@@ -107,5 +108,64 @@ Print time and file size
 
 • Print time: Expect a long print of roughly 500 layers. I haven't estimated the time, so check the slicer's figure.
 • G-code size: The G-code will be large. Lower n if loading becomes a problem.
+<!-- ------ -->
+---
+Here is the translation of the instructions into OrcaSlicer 2.4.2 settings and terminology:
+
+Quality
+
+• Layer Height: Set Layer height to 0.12 mm and First layer height to 0.2 mm under the Process settings.
+• Variable Layer Height: Right-click the object on the build plate and select Adaptive layer height. Configure the range to 0.08–0.16 mm so finer increments concentrate on shallow terraces.
+• Seam: Under Quality, locate the Seam settings and set the seam type to Scarf joint seam (Contour), which is fully supported in 2.4.2. Fall back to Random if a simpler distribution is preferred.
+• Ironing: Ensure Enable ironing is unchecked.
+• Resolution: Leave the mesh and arc resolution parameters at their profile defaults.
+
+Strength
+
+• Wall Loops: Set to 3 under Strength.
+• Top Shell: Set Top shell thickness to 1.0 mm (which translates to approximately 8 layers at a 0.12 mm layer height).
+• Bottom Shell: Set Bottom shell layers to 5.
+• Infill: Set Sparse infill pattern to Gyroid and Sparse infill density to 10%.
+• Top Surface Pattern: Set to Monotonic.
+• Ensure Vertical Shell Thickness: Leave at the default profile setting.
+
+Speed and Acceleration
+
+• Outer Wall: Set outer wall speed to roughly 100 mm/s and acceleration to 3000 mm/s² under the Speed and Acceleration tabs.
+• First Layer: Set first layer speed to 50 mm/s.
+• Inner Walls and Infill: Retain the default K1 profile speeds, scaling them up if shorter print times are desired.
+
+Temperature and Cooling
+
+• Nozzle Temperature: Set to 215 °C under Filament Settings -> Temperature.
+• Bed Temperature: Set to 55–60 °C for textured PEI sheets.
+• Cooling: Keep part cooling fan at 100%.
+• Enclosure: Open the printer door or remove the top lid manually to prevent heat buildup during long PLA prints.
+
+Adhesion
+
+• Footprint / Brim: Leave Brim type set to No brim for the 140 × 140 mm base. If edge lifting occurs, configure a 5 mm outer-only brim under Print Settings -> Skirt and brim, or apply manual mouse-ear tabs using the left toolbar.
+• Elephant Foot Compensation: Leave at the default profile value unless base flare is observed.
+
+Supports
+
+• Supports: Ensure Enable support is unchecked under the Support tab.
+
+────────────────────────────────────────────────────────────────────────────────
+
+For a visual demonstration of how the seam options behave, check out this OrcaSlicer scarf joint seam overview. This video provides a quick look at configuring scarf joints to hide surface lines effectively on contoured models.
+<!-- ------ -->
+---
+In OrcaSlicer, Variable Layer Height is accessed from the top toolbar rather than the right-click menu.
+
+Here is how to locate and configure it:
+
+    *Verification:* The object will highlight with a bounding box, and the tool icons along the top menu bar will become active.
+
+    *Shortcut alternative:* Press `Shift + C` on your keyboard.
+    
+    *Verification:* A vertical layer height preview bar will open on the right side of the 3D viewport.
+
+    *Verification:* The vertical bar on the right side of your model will turn green/yellow/red, showing fine layers assigned to the shallow sloped regions.
 <!-- ------ -->
 ---
