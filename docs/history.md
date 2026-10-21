@@ -169,3 +169,28 @@ Here is how to locate and configure it:
     *Verification:* The vertical bar on the right side of your model will turn green/yellow/red, showing fine layers assigned to the shallow sloped regions.
 <!-- ------ -->
 ---
+I wrote the cover script and the slicer notes. The cover renders as a valid closed solid in OpenSCAD (263,168 facets), but I haven't sliced or printed it. Nothing is committed.
+
+**Cover:** [spiral_surface_cover.scad](scripts/openscad/spiral_surface_cover.scad) follows the same surface as your print. It sits 0.15 mm above it (`gap_mm`, clearance for glue) and is 1.6 mm thick measured vertically (`cover_mm`). On the steepest slope (about 49°) the thickness perpendicular to the surface is about 1.0 mm. I copied the surface parameters from [spiral_surface_print.scad](scripts/openscad/spiral_surface_print.scad), so keep the two files in sync if you change either. It prints upright, so the glue face is the underside and any supports only touch the hidden side. That underside is nearly flat over the shallow slopes, so slice it with supports on.
+
+**Why it failed:** I'm confident about the first cause and less sure about the others. All are in [spiral-surface-print-fixes.md](docs/spiral-surface-print-fixes.md).
+1. **Vertical shell thickness:** your 3MF has "Ensure vertical shell thickness" set to None, which Gemini suggested. That is what cut 1h20m of print time. It also removed the solid layers under the shallow slopes, where the blisters are. This is the most likely cause.
+2. **Thin skin over sparse infill:** the top shell is 4 layers over 5% gyroid, and top surface speed is 200 mm/s.
+3. **Wet filament:** silk PLA blisters and pops when it's damp. I can't tell from the photo, so dry the spool (45–50 °C, 4–6 h) before reprinting.
+
+**Slicer changes:**
+- Set "Ensure vertical shell thickness" to Ensure all, or Ensure moderate to save some time.
+- Use 6 top shell layers and 10–15% infill.
+- Lower top surface speed to 80–100 mm/s and internal solid infill to 150–200 mm/s.
+- The 3MF still has the seam as aligned, so set it to scarf.
+- Expect roughly 5–5.5 h and about 100 g.
+
+**First layer, Silk PLA on textured PEI:**
+- Speed: 30 mm/s (it's 50 now), with first-layer infill at 50.
+- Bed: 60 °C for the first layer.
+- Nozzle: 225 °C for the first layer.
+- Fan: off for the first 1–3 layers.
+
+The doc has the full table, including the cover's own slicing notes. I didn't add the hardware (K1, stock extruder, 0.4 mm brass nozzle, textured PEI) or the correction to Silk PLA to gemini-history.md, since it's a Gemini chat log. I recorded them in the new doc instead. If you want them in gemini-history.md too, say so.
+<!-- ------ -->
+---
