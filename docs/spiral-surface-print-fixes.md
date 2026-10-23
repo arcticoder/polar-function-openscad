@@ -43,6 +43,18 @@ Expect 5-5.5 h and ~100 g. That is the real cost of a skin that does not blister
 
 Textured PEI grips by pushing the first layer into the texture, so slower and slightly hotter (and a well-squished 0.2 mm layer) beats speed. A 140 x 140 mm footprint should stay down without a brim; add a 5 mm outer brim only if corners lift (the tall corner spikes will pull on it).
 
+### If the first layer will not stick
+
+Work down this list; the first two cause most failures on textured PEI:
+
+1. **Clean the plate**: wash with hot water and dish soap, rinse, dry without touching the surface. IPA alone does not remove skin oil from textured PEI. Do not touch the print area afterward.
+2. **Z offset / first-layer squish**: run the K1 auto-leveling again and watch the first lines. They should be slightly flattened and touch each other, not round strings. If they are round, lower the Z offset in 0.02 mm steps (live-adjust during the first layer).
+3. **Bed temperature**: raise the first layer to 60-65 C for Silk PLA (it was 58). Let the bed heat-soak 3-5 min before starting.
+4. **First layer speed 30 mm/s, fan off for the first layers** (see table above).
+5. **First layer flow ratio**: 1.0 -> 1.05 if lines look thin.
+6. **Glue stick** (thin, even coat) on the textured sheet, or a 5 mm outer brim. This part has tall corners that pull upward as they cool, so a brim is worth enabling after one failed start.
+7. **Filament**: wet silk PLA also extrudes unevenly and bonds poorly, another reason to dry the spool.
+
 ## Cover piece
 
 `scripts/openscad/spiral_surface_cover.scad` generates a thin skin that follows the same surface, 0.15 mm above it, 1.6 mm thick (vertical). Print it, glue it on top of the printed part.

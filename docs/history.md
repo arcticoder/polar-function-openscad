@@ -194,3 +194,17 @@ I wrote the cover script and the slicer notes. The cover renders as a valid clos
 The doc has the full table, including the cover's own slicing notes. I didn't add the hardware (K1, stock extruder, 0.4 mm brass nozzle, textured PEI) or the correction to Silk PLA to gemini-history.md, since it's a Gemini chat log. I recorded them in the new doc instead. If you want them in gemini-history.md too, say so.
 <!-- ------ -->
 ---
+I added a "first layer will not stick" checklist to [spiral-surface-print-fixes.md](docs/spiral-surface-print-fixes.md). I'm guessing at the cause from the settings, so tell me what the first layer looked like if it still fails.
+
+In order of likelihood:
+
+1. **Dirty plate:** wash it with hot water and dish soap. IPA alone doesn't remove skin oil from textured PEI. Don't touch the print area afterward.
+2. **Z offset too high:** re-run auto-leveling and watch the first lines. They should be slightly flattened and touching each other. If they look like round strings, lower the Z offset in 0.02 mm steps while it prints.
+3. **Bed too cool for Silk PLA:** your 3MF had 58 °C. Use 60–65 °C for the first layer and let the bed soak 3–5 minutes before starting.
+4. **First layer settings:** 30 mm/s, fan off for the first 1–3 layers, and first-layer flow ratio 1.05 if the lines look thin.
+5. **Extra grip:** a thin coat of glue stick, or a 5 mm outer brim. This model has tall corners that pull upward as they cool, so a brim is worth turning on. In the photo the corners are curled up.
+6. **Wet filament:** damp silk PLA also extrudes unevenly and bonds poorly. That's another reason to dry the spool, on top of the blisters.
+
+One thing I couldn't tell: the photo shows a finished print, so I don't know whether this was a failed start you restarted or something that happened mid-print. If the print stuck at first and let go later, it's more likely the corner lift than the first layer.
+<!-- ------ -->
+---
