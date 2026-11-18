@@ -208,3 +208,13 @@ In order of likelihood:
 One thing I couldn't tell: the photo shows a finished print, so I don't know whether this was a failed start you restarted or something that happened mid-print. If the print stuck at first and let go later, it's more likely the corner lift than the first layer.
 <!-- ------ -->
 ---
+All four items are done. I haven't committed or pushed the README and LICENSE, because you didn't ask for that.
+
+1. **README:** I added [README.md](README.md). It covers the function, the two `.scad` files, usage, the Git LFS note and the license.
+2. **License:** I added [LICENSE](LICENSE) with the MIT text. The copyright holder is "Arcticoder", from your git user name, and the year is 2026. Change the holder if you want your real name there.
+3. **Description:** I set it with `gh repo edit`: "OpenSCAD models of a spiral polar-function surface, generated as 3D-printable solids and cover skins".
+4. **Topics:** I set these with `gh repo edit`: `openscad`, `3d-printing`, `parametric-design`, `polar-coordinates`, `stl`, `creality-k1` and `math-art`.
+
+`gh repo view` confirmed the description and topics on GitHub. GitHub should detect the MIT license once the LICENSE file is pushed.
+<!-- ------ -->
+---
