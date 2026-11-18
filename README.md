@@ -9,6 +9,15 @@ f(x1, x2) = (x1^2 + x2^2) * (1 + 0.5 * sin(atan2(x2, x1) - 5 * ln(x1^2 + x2^2)))
 over the square domain `[-2.5, 2.5]^2`. The result is a spiral-ridged bowl with
 a minimum at the origin.
 
+## Why this function
+
+It is meant as the "hardest" function under which standard machine learning
+models still work well, so it is a deliberately difficult but still tractable
+loss-landscape benchmark. The minimum is at the origin, but the radial
+derivative `r * (2 + sin(phi) - 5 * cos(phi))` (with `phi = theta - 10 ln r`)
+changes sign, so in some spiral regions "downhill" points away from the origin.
+These models turn that landscape into a physical object you can hold.
+
 ## Contents
 
 | File | Description |

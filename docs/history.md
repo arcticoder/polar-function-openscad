@@ -218,3 +218,12 @@ All four items are done. I haven't committed or pushed the README and LICENSE, b
 `gh repo view` confirmed the description and topics on GitHub. GitHub should detect the MIT license once the LICENSE file is pushed.
 <!-- ------ -->
 ---
+I added your framing to the README, the repo description and the topics.
+
+- **README:** There's a new "Why this function" section. It says the function is meant as the hardest one on which standard ML models still work well, a hard but tractable loss-landscape benchmark. It also notes that the radial derivative `r·(2 + sin φ − 5 cos φ)` changes sign, so in some spiral regions downhill points away from the origin. I took that last point from your notes in `docs/history.md`, not from your message. Check that it says what you mean.
+- **Description:** It now reads "OpenSCAD 3D-printable models of a spiral loss-landscape function: the hardest function on which standard ML models still work well".
+- **Topics:** I added `machine-learning`, `loss-landscape` and `optimization`. The existing ones are unchanged.
+
+I haven't committed or pushed anything. Do you want me to commit the README and LICENSE and push them?
+<!-- ------ -->
+---
