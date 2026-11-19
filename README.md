@@ -18,7 +18,7 @@ good loss-landscape benchmark: highly non-convex, yet gradient descent still
 converges linearly.
 
 In the retrospective [The Polyak-Łojasiewicz Paper: A 10-Year Retrospective](https://arxiv.org/abs/2611.17745)
-(Karimi, Nutini and Schmidt, arXiv:2611.17745), it is called the "toilet flush"
+(Hamed Karimi, Julie Nutini and Mark Schmidt, 2026, arXiv:2611.17745 [math.OC]), it is called the "toilet flush"
 function (Section 2.2). It is a 2-D counter-example that satisfies the
 Polyak-Łojasiewicz (PL) condition, so gradient descent still converges linearly,
 but not the restricted secant inequality (RSI). The paper (Appendix B) defines it
@@ -36,7 +36,7 @@ with a unique minimum of 0 at the origin. Its radial derivative is
 The minimum is at the origin, but the radial derivative changes sign in places,
 so "downhill" can point away from the minimizer along parts of the spiral. This
 repo only turns that surface into 3D-printable OpenSCAD models. The function and
-its analysis belong to the original author.
+its analysis belong to the paper's authors.
 
 ## Contents
 
