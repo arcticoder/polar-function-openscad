@@ -9,14 +9,34 @@ f(x1, x2) = (x1^2 + x2^2) * (1 + 0.5 * sin(atan2(x2, x1) - 5 * ln(x1^2 + x2^2)))
 over the square domain `[-2.5, 2.5]^2`. The result is a spiral-ridged bowl with
 a minimum at the origin.
 
-## Why this function
+## Attribution
 
-It is meant as the "hardest" function under which standard machine learning
-models still work well, so it is a deliberately difficult but still tractable
-loss-landscape benchmark. The minimum is at the origin, but the radial
-derivative `r * (2 + sin(phi) - 5 * cos(phi))` (with `phi = theta - 10 ln r`)
-changes sign, so in some spiral regions "downhill" points away from the origin.
-These models turn that landscape into a physical object you can hold.
+The function comes from the retrospective described below, which Mark Schmidt
+[announced on X](https://x.com/MarkSchmidtUBC/status/2122438238204014898)
+alongside the 2026 ECML PKDD Test of Time Award for the 2016 PL paper. It makes a
+good loss-landscape benchmark: highly non-convex, yet gradient descent still
+converges linearly.
+
+In the retrospective [The Polyak-Łojasiewicz Paper: A 10-Year Retrospective](https://arxiv.org/abs/2611.17745)
+(Karimi, Nutini and Schmidt, arXiv:2611.17745), it is called the "toilet flush"
+function (Section 2.2). It is a 2-D counter-example that satisfies the
+Polyak-Łojasiewicz (PL) condition, so gradient descent still converges linearly,
+but not the restricted secant inequality (RSI). The paper (Appendix B) defines it
+in polar coordinates as
+
+```
+f(r, theta) = r^2 * (1 + 0.5 * sin(theta - 10 * log(r)))
+```
+
+with a unique minimum of 0 at the origin. Its radial derivative is
+`df/dr = r * (2 + sin(a) - 5 * cos(a))`, where `a = theta - 10 * log(r)`. Since
+`r^2 = x1^2 + x2^2`, the Cartesian form above is the same function, with
+`10 * ln(r) = 5 * ln(x1^2 + x2^2)` and `log` read as the natural log.
+
+The minimum is at the origin, but the radial derivative changes sign in places,
+so "downhill" can point away from the minimizer along parts of the spiral. This
+repo only turns that surface into 3D-printable OpenSCAD models. The function and
+its analysis belong to the original author.
 
 ## Contents
 
